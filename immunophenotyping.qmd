@@ -1,0 +1,254 @@
+---
+title: "Immunotherapy Immunophenotyping"
+author: "Luís Romera"
+format: pdf
+editor: visual
+---
+
+This document contains the analysis of immunophenotyping of tumor tissue from mice treated with Immunocheckpoint blockade and chemoimmunotherapy.
+
+## First, let's plot the data of tumor infiltrating lymphocytes
+
+```{r}
+#| message: false
+#| warning: false
+#| dev: png
+#Accessing the data folder
+setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+
+#Importing data
+tilData <- read.csv("tils.csv")
+
+head(tilData)
+
+library(tidyverse)
+library(magick)
+
+tilPlot <- ggplot(tilData,
+                  aes(
+                    x = group,
+                    y = CD3,
+                    color = group
+                  )) +
+  geom_jitter(
+    width = 0.1,
+    size = 3
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "point",
+    size = 5,
+    color = "black"
+  ) +
+  stat_summary(
+    fun.data = mean_sdl,
+    fun.args = list(mult = 1),
+    geom = "errorbar",
+    width = 0.2,
+    color = "black"
+  ) + 
+  theme_classic() +
+  labs(
+    title = "CD3+",
+    y = "CD3+(%)"
+  ) + 
+  theme(plot.title = element_text(
+    hjust = 0.5,
+    face = "bold",
+    size = 15
+  )
+)
+
+tilPlot
+
+ggsave(
+  filename = "CD3.pdf",
+  plot = tilPlot,
+  width = 8,
+  height = 6
+)
+```
+
+## Now, let's plot the TCD8+ lymphocytes
+
+```{r}
+#| message: false
+#| warning: false
+#| dev: png
+#Accessing the data folder
+setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+
+#Importing data
+tilData <- read.csv("tils.csv")
+
+head(tilData)
+
+library(tidyverse)
+library(magick)
+
+til8Plot <- ggplot(tilData,
+                  aes(
+                    x = group,
+                    y = CD3CD8,
+                    color = group
+                  )) +
+  geom_jitter(
+    width = 0.1,
+    size = 3
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "point",
+    size = 5,
+    color = "black"
+  ) +
+  stat_summary(
+    fun.data = mean_sdl,
+    fun.args = list(mult = 1),
+    geom = "errorbar",
+    width = 0.2,
+    color = "black"
+  ) + 
+  theme_classic() +
+  labs(
+    title = "CD3+CD8+",
+    y = "CD3+CD8+(%)"
+  ) + 
+  theme(plot.title = element_text(
+    hjust = 0.5,
+    face = "bold",
+    size = 15
+  )
+)
+
+til8Plot
+
+ggsave(
+  filename = "CD8.pdf",
+  plot = til8Plot,
+  width = 8,
+  height = 6
+)
+```
+
+```{r}
+#| message: false
+#| warning: false
+#| dev: png
+#Accessing the data folder
+setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+
+#Importing data
+tilData <- read.csv("tils.csv")
+
+head(tilData)
+
+library(tidyverse)
+library(magick)
+
+til4Plot <- ggplot(tilData,
+                  aes(
+                    x = group,
+                    y = CD3CD4,
+                    color = group
+                  )) +
+  geom_jitter(
+    width = 0.1,
+    size = 3
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "point",
+    size = 5,
+    color = "black"
+  ) +
+  stat_summary(
+    fun.data = mean_sdl,
+    fun.args = list(mult = 1),
+    geom = "errorbar",
+    width = 0.2,
+    color = "black"
+  ) + 
+  theme_classic() +
+  labs(
+    title = "CD3+CD4+",
+    y = "CD3+CD4+(%)"
+  ) + 
+  theme(plot.title = element_text(
+    hjust = 0.5,
+    face = "bold",
+    size = 15
+  )
+)
+
+til4Plot
+
+ggsave(
+  filename = "CD4.pdf",
+  plot = til4Plot,
+  width = 8,
+  height = 6
+)
+```
+
+## Now, ,let's plot exaust TCD8+ lymphocyte
+
+```{r}
+#| message: false
+#| warning: false
+#| dev: png
+#Accessing the data folder
+setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+
+#Importing data
+tilData <- read.csv("tils.csv")
+
+head(tilData)
+
+library(tidyverse)
+library(magick)
+
+tilexPlot <- ggplot(tilData,
+                  aes(
+                    x = group,
+                    y = exaust,
+                    color = group
+                  )) +
+  geom_jitter(
+    width = 0.1,
+    size = 3
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "point",
+    size = 5,
+    color = "black"
+  ) +
+  stat_summary(
+    fun.data = mean_sdl,
+    fun.args = list(mult = 1),
+    geom = "errorbar",
+    width = 0.2,
+    color = "black"
+  ) + 
+  theme_classic() +
+  labs(
+    title = "CD3+CD4+TIM-3+PD-1+",
+    y = "CD3+CD4+TIM-3+PD-1+(%)"
+  ) + 
+  theme(plot.title = element_text(
+    hjust = 0.5,
+    face = "bold",
+    size = 15
+  )
+)
+
+tilexPlot
+
+ggsave(
+  filename = "exaust.pdf",
+  plot = tilexPlot,
+  width = 8,
+  height = 6
+)
+```
