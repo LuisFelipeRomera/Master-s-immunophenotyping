@@ -1,7 +1,7 @@
 ---
 title: "Immunotherapy Immunophenotyping"
 author: "Luís Romera"
-format: pdf
+format: html
 editor: visual
 ---
 
@@ -14,7 +14,9 @@ This document contains the analysis of immunophenotyping of tumor tissue from mi
 #| warning: false
 #| dev: png
 #Accessing the data folder
-setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+#setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+
+getwd()
 
 #Importing data
 tilData <- read.csv("tils.csv")
@@ -76,7 +78,7 @@ ggsave(
 #| warning: false
 #| dev: png
 #Accessing the data folder
-setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+#setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
 
 #Importing data
 tilData <- read.csv("tils.csv")
@@ -136,7 +138,7 @@ ggsave(
 #| warning: false
 #| dev: png
 #Accessing the data folder
-setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+#setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
 
 #Importing data
 tilData <- read.csv("tils.csv")
@@ -198,7 +200,7 @@ ggsave(
 #| warning: false
 #| dev: png
 #Accessing the data folder
-setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
+#setwd("C:/Users/luisr/Documentos/Documents/Documentos - Copia/Mestrado/imunofenotipagem")
 
 #Importing data
 tilData <- read.csv("tils.csv")
@@ -233,8 +235,8 @@ tilexPlot <- ggplot(tilData,
   ) + 
   theme_classic() +
   labs(
-    title = "CD3+CD4+TIM-3+PD-1+",
-    y = "CD3+CD4+TIM-3+PD-1+(%)"
+    title = "CD3+CD8+TIM-3+PD-1+",
+    y = "CD3+CD8+TIM-3+PD-1+(%)"
   ) + 
   theme(plot.title = element_text(
     hjust = 0.5,
